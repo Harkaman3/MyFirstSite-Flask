@@ -10,7 +10,7 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-
+        print (email,password)
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
@@ -48,7 +48,7 @@ def sign_up():
         elif password1 != password2:
             flash("Passwrods don't match", category='error')
         elif len(password1) < 10:
-            flash('Password msut be more than 10 characters', category='error')
+            flash('Password must be more than 10 characters', category='error')
         else:
             # Add user to DB
             new_user = User(email=email,Nickname = Nickname, password = generate_password_hash(password1, method= 'sha256'))

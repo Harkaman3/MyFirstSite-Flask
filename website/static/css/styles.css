@@ -12,7 +12,7 @@ body {
     
   }
 .container{
-  max-width: 1700px;
+  max-width: 1600px;
   position: relative;
   width: 100%;
   min-height: 1px;
@@ -64,4 +64,21 @@ body {
   width: 40px;
   height: 40px;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23c593d8' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5L3.75 4l-2.5 2.5L2.75 8l4-4-4-4z'/%3e%3c/svg%3e");
+}
+
+*{
+  padding: 0px;
+  margin: 0px;
+
+  }
+
+
+@media screen {
+  html,body{
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  }
 }
