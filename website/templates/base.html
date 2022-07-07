@@ -41,9 +41,11 @@
       <div class="d-flex flex-wrap align-items-center ">
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          {% if user.is_authenticated %}
           <li><a href="/" class="nav-link px-2 text-secondary">Домой</a></li>
           <li><a href="/FAQs" class="nav-link px-2 text-white">FAQs</a></li>
           <li><a href="/about" class="nav-link px-2 text-white">О нас</a></li>
+          {% endif %}
         </ul>
         <!-- Форма для поиска на сайте -->
         <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 ml-auto p-2" role="search">
@@ -51,8 +53,11 @@
         </form> -->
 
         <div class="ml-auto p-2">
+          
           <a href = 'login' type="button" class="btn btn-outline-light me-2">Login </a>
           <a href ='sign-up' type="button" class="btn btn-warning">Sign-up</a>
+          <a href ='logout' type="button" class="btn btn-warning">Log out</a>
+   
         </div>
       </div>
     </div>
