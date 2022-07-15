@@ -64,17 +64,23 @@ main_menu %}
 </div>
 
 <!-- <img class="bg-image-main" src="{{ url_for('static', filename='img/weed.jpg')}} "  alt=""> -->
-<div class="row">
-  <div class="container">
-    <div class="card-deck">
-      <div class="card">
+<div class="container">
+<div class="row row-cols-3">
+  {% for item in cards %}
+  
+    <div class="card-deck " style = "padding-right: 15px;">
+      
+      <div class="card" >
+      
         <img
-          src="{{ url_for('static', filename='img/1.jpg')}} "
-          class="card-img-top"
+          src=" {{ item }} "
+          class="card-img-top "
+
+          style= "height: 337px;"
           alt="..."
         />
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title text-center" >Card title</h5>
           <p class="card-text">
             This is a wider card with supporting text below as a natural lead-in
             to additional content. This content is a little bit longer.
@@ -86,112 +92,10 @@ main_menu %}
           >
         </div>
       </div>
-      <div class="card">
-        <img
-          src="{{ url_for('static', filename='img/1.jpg')}} "
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This card has supporting text below as a natural lead-in to
-            additional content.
-          </p>
-          <a
-            class="align-text-bottom text-dark d-flex justify-content-center"
-            href="#"
-            >Купить</a
-          >
-        </div>
-      </div>
-      <div class="card">
-        <img
-          src="{{ url_for('static', filename='img/1.jpg')}} "
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
-          </p>
-          <a
-            class="align-text-bottom text-dark d-flex justify-content-center"
-            href="#"
-            >Купить</a
-          >
-        </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="container">
-        <div class="card-deck">
-          <div class="card">
-            <img
-              src="{{ url_for('static', filename='img/1.jpg')}} "
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-              <a
-                class="align-text-bottom text-dark d-flex justify-content-center"
-                href="#"
-                >Купить</a
-              >
-            </div>
-          </div>
-          <div class="card">
-            <img
-              src="{{ url_for('static', filename='img/1.jpg')}} "
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This card has supporting text below as a natural lead-in to
-                additional content.
-              </p>
-              <a
-                class="align-text-bottom text-dark d-flex justify-content-center"
-                href="#"
-                >Купить</a
-              >
-            </div>
-          </div>
-          <div class="card">
-            <img
-              src="{{ url_for('static', filename='img/1.jpg')}} "
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This card has even longer content
-                than the first to show that equal height action.
-              </p>
-              <a
-                class="align-text-bottom text-dark d-flex justify-content-center"
-                href="#"
-                >Купить</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
+  {% endfor %}
+   
   </div>
 </div>
 <script src="{{ url_for('static', filename='js/main.js')}} "></script>

@@ -7,7 +7,8 @@ views = Blueprint("views", __name__)
 @views.route("/")
 @login_required
 def home():
-    return render_template("index.html", user=current_user)
+    cards = ['static/img/1.jpg','static/img/2.jpg','static/img/3.jpg','static/img/1.jpg','static/img/2.jpg','static/img/3.jpg']
+    return render_template("index.html", cards=cards, user=current_user)
 
 
 @views.route("/buy")
