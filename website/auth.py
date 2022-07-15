@@ -4,62 +4,75 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_required, login_user, logout_user, current_user
 
-auth = Blueprint('auth',__name__)
+auth = Blueprint("auth", __name__)
 
-@auth.route('/login', methods=['GET','POST'])
+
+@auth.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
-        print (email,password)
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+        print(email, password)
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
-                flash('Logged in successfully!', category='success')
+                flash("Logged in successfully!", category="success")
                 login_user(user, remember=True)
-                return redirect(url_for('views.home'))
+                return redirect(url_for("views.home"))
             else:
-                flash('Incorrect password, try again.', category='error')
+                flash("Incorrect password, try again.", category="error")
         else:
-            flash('Email does not exist.', category='error')
-    return render_template("login.html", user = current_user)
+            flash("Email does not exist.", category="error")
+    return render_template("login.html", user=current_user)
 
-@auth.route('/logout')
+
+@auth.route("/logout")
 @login_required
 def login_out():
     logout_user()
-    return redirect(url_for('auth.login'))
+    return redirect(url_for("auth.login"))
 
 
-
-@auth.route('/sign-up', methods=['GET','POST'])
+@auth.route("/sign-up", methods=["GET", "POST"])
 def sign_up():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        Nickname = request.form.get('Nickname')
-        password1 = request.form.get('password1')
-        password2 = request.form.get('password2')
+    if request.method == "POST":
+        email = request.form.get("email")
+        Nickname = request.form.get("Nickname")
+        password1 = request.form.get("password1")
+        password2 = request.form.get("password2")
 
         user = User.query.filter_by(email=email).first()
 
-        if user :
-            flash('This user is already exist', category='error')
+        if user:
+            flash("This user is already exist", category="error")
         elif len(email) < 5:
-            flash('Email is to short', category='error')
+            flash("Email is to short", category="error")
         elif len(Nickname) < 2:
-            flash('Nickname is to short, must be longer than 2', category='error')
+            flash("Nickname is to short, must be longer than 2", category="error")
         elif password1 != password2:
-            flash("Passwrods don't match", category='error')
+            flash("Passwrods don't match", category="error")
         elif len(password1) < 10:
-            flash('Password must be more than 10 characters', category='error')
+            flash("Password must be more than 10 characters", category="error")
         else:
             # Add user to DB
-            new_user = User(email=email,Nickname = Nickname, password = generate_password_hash(password1, method= 'sha256'))
+            new_user = User(
+                email=email,  # хуй
+                Nickname=Nickname,
+                password=generate_password_hash(password1, method="sha256"),
+            )
             db.session.add(new_user)
             db.session.commit()
-            flash('Account created!', category='success')
+            flash("Account created!", category="success")
             login_user(user, remember=True)
-            return redirect(url_for('views.home'))
-    return render_template("sign_up.html",user = current_user )
+            return redirect(url_for("views.home"))
+    return render_template("sign_up.html", user=current_user)
 
 
+@auth.route("/test")
+def test():
+    import datetime
+
+    lst = ["1", "2", "3"]
+    return render_template(
+        "test.html", a=datetime.datetime.utcnow(), b=lst, user=current_user
+    )
