@@ -11,6 +11,18 @@ def home():
     return render_template("index.html", cards=cards, user=current_user)
 
 
-@views.route("/buy")
+@views.route("/items")
+@login_required
 def buy():
-    return render_template("items.html")
+    return render_template("items.html",user=current_user)
+
+@views.route("/about")
+@login_required
+def about():
+    return render_template("about.html",user=current_user)
+
+@views.route("/faqs")
+@login_required
+def faqs():
+    return render_template("faqs.html",user=current_user)
+
