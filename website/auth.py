@@ -56,7 +56,7 @@ def sign_up():
         else:
             # Add user to DB
             new_user = User(
-                email=email,  # хуй
+                email=email,  
                 Nickname=Nickname,
                 password=generate_password_hash(password1, method="sha256"),
             )
